@@ -53,7 +53,7 @@ class Dog
   def self.find_by_name_and_breed(name, breed)
     sql = <<-SQL
       SELECT * FROM dogs
-      WHERE name = ?, breed = ?
+      WHERE name = ? AND breed = ?
       SQL
     Dog.new_from_db(DB[:conn].execute(sql, name, breed)[0])
   end
