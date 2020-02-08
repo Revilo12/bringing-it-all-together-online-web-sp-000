@@ -42,7 +42,7 @@ class Dog
     Dog.new(id: row[0], name: row[1], breed: row[2])
   end
 
-  def find_by_id(id)
+  def self.find_by_id(id)
     sql = <<-SQL
         SELECT * FROM dogs
         WHERE id = ?
