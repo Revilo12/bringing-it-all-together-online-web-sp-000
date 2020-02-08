@@ -63,7 +63,7 @@ class Dog
     if Dog.find_by_name_and_breed(name, breed)
       Dog.find_by_name_and_breed(name, breed)
     else
-      Dog.create(name, breed)
+      Dog.create(name: name, breed: breed)
     end
   end
 end
