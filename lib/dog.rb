@@ -50,14 +50,17 @@ class Dog
     Dog.new_from_db(DB[:conn].execute(sql, id)[0])
   end
 
-  def self.find_by_name(name)
+  def self.find_by_name_and_breed(name, breed)
     sql = <<-SQL
       SELECT * FROM dogs
-      WHERE id = ?
+      WHERE name = ?, breed = ?
       SQL
-    Dog.new_from_db(DB[:conn].execute(sql, name)[0])
+    Dog.new_from_db(DB[:conn].execute(sql, name, breed)[0])
   end
 
   def self.find_or_create_by(name:, breed:)
-    if Dog.find_by_id
+    if Dog.find_by_name_and_breed(name)
+      Dog.find_by_name_and_breed(name)
+    else
+      Dog.create(name, breed)
 end
