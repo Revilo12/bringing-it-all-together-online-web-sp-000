@@ -56,7 +56,7 @@ class Dog
       SELECT * FROM dogs
       WHERE name = ? AND breed = ?
       SQL
-    row = DB[:conn].execute(sql, name, breed[0])
+    row = DB[:conn].execute(sql, name, breed)[0]
     Dog.new_from_db(row) if row
   end
 
@@ -65,7 +65,7 @@ class Dog
       SELECT * FROM dogs
       WHERE name = ?
       SQL
-    row = DB[:conn].execute(sql, name[0])
+    row = DB[:conn].execute(sql, name)[0]
     Dog.new_from_db(row) if row
   end
 
