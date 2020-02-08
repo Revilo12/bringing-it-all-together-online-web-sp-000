@@ -47,7 +47,7 @@ class Dog
         SELECT * FROM dogs
         WHERE id = ?
         SQL
-    row = DB[:conn].execute(sql, id)[0])
+    row = DB[:conn].execute(sql, id)[0]
     Dog.new_from_db(row) if row
   end
 
