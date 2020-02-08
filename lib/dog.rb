@@ -67,6 +67,7 @@ class Dog
       SQL
     row = DB[:conn].execute(sql, name)[0]
     Dog.new_from_db(row) if row
+  end
 
   def self.find_or_create_by(name:, breed:)
     if Dog.find_by_name_and_breed(name, breed)
